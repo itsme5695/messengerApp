@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/drawable/edit_text.xml" value="0.1625" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/drawable/edit_textadd.xml" value="0.1605" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/drawable/et_background.xml" value="0.1905" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.1625" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/drawable/send_to.xml" value="0.1605" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/activity_holder.xml" value="0.25" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/foydalanuvchi.xml" value="0.19814814814814816" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/fragment_chat.xml" value="0.2" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/fragment_group.xml" value="0.25" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/fragment_sign_in.xml" value="0.25" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/fragment_tab.xml" value="0.25" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/group_item.xml" value="0.25" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/item_chat.xml" value="0.25" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/item_from.xml" value="0.25" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/item_to.xml" value="0.25" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/my_dialog.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

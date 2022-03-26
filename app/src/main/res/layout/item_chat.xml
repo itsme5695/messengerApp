@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
+
+
+
+    <FrameLayout
+        android:id="@+id/image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        app:layout_constraintBottom_toBottomOf="@id/liner"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:cardCornerRadius="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/image1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingStart="12sp"
+        android:text="Elon Musk"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@id/liner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/liner"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingBottom="3dp"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/liner"
+        android:layout_width="0dp"
+        android:background="@drawable/send_to"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_tv"
+        android:layout_marginStart="12sp"
+        app:layout_constraintStart_toEndOf="@id/image"
+        android:layout_height="wrap_content">
+
+
+
+        <TextView
+            android:id="@+id/message_tv"
+            android:layout_width="match_parent"
+            android:text="How are you?"
+            android:padding="12sp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_height="wrap_content"/>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
