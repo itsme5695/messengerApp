@@ -3,10 +3,12 @@ package com.example.final_gram.fragments
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.final_gram.R
 import com.example.final_gram.adapters.ViewPagerAdapter
 import com.example.final_gram.databinding.FragmentHomeBinding
@@ -21,13 +23,13 @@ private const val ARG_PARAM2 = "param2"
 
 class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
+    private var token: String? = null
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
+            token = it.getString("key")
             param2 = it.getString(ARG_PARAM2)
         }
     }
@@ -38,6 +40,8 @@ class HomeFragment : Fragment() {
     )
 
     lateinit var binding: FragmentHomeBinding
+
+    private val TAG = "HomeFragment"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,7 +59,9 @@ class HomeFragment : Fragment() {
     private fun setViewPager() {
         val viewPager = binding.viewPager
         val tabLayout = binding.tabLayout
-        val adapter = ViewPagerAdapter(childFragmentManager, lifecycle)
+        Toast.makeText(requireContext(), token, Toast.LENGTH_SHORT).show()
+        Log.d(TAG, "onCreateView: $token")
+        val adapter = ViewPagerAdapter(childFragmentManager, lifecycle,token!!)
         viewPager.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->

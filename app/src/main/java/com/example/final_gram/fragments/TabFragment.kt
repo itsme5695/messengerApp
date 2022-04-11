@@ -21,13 +21,13 @@ private const val ARG_PARAM1 = "param1"
 
 class TabFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var categoryID: Int? = null
+    private var token: String? = null
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            categoryID = it.getInt(ARG_PARAM1)
+            token = it.getString(ARG_PARAM1)
 
         }
     }
@@ -61,7 +61,7 @@ class TabFragment : Fragment() {
         val photoUrl = currentUser?.photoUrl
         val uid = currentUser?.uid
 
-        val user = User(email, displayName, phoneNumber, photoUrl.toString(), uid!!, false)
+        val user = User(email, displayName, phoneNumber, photoUrl.toString(), uid!!, false,token)
 
 
         for (recent in recently) {
@@ -153,10 +153,10 @@ class TabFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(categoryID: Int) =
+        fun newInstance(token: String) =
             TabFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(ARG_PARAM1, categoryID)
+                    putString(ARG_PARAM1, token)
 
                 }
             }

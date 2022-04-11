@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/drawable/edit_text.xml" value="0.1625" />
         <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/drawable/edit_textadd.xml" value="0.1605" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/drawable/edit_textblur.xml" value="0.1325" />
         <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/drawable/et_background.xml" value="0.1905" />
         <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.1625" />
         <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/drawable/send_to.xml" value="0.1605" />
@@ -22,6 +23,7 @@
         <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/item_from.xml" value="0.25" />
         <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/item_to.xml" value="0.25" />
         <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/layout/my_dialog.xml" value="0.25" />
+        <entry key="..\:/Users/otabe/AndroidStudioProjects/FInal_Gram/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.17" />
       </map>
     </option>
   </component>

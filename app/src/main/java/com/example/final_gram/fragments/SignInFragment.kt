@@ -3,12 +3,13 @@ package com.example.final_gram.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.final_gram.HolderActivity
 import com.example.final_gram.R
 import com.example.final_gram.databinding.FragmentSignInBinding
 import com.example.final_gram.utils.NetworkHelper
@@ -43,12 +44,13 @@ class SignInFragment : Fragment() {
     private val TAG = "SignInFragment"
     lateinit var auth: FirebaseAuth
     lateinit var networkHelper: NetworkHelper
+    var token: String? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentSignInBinding.inflate(layoutInflater,container,false)
+        binding = FragmentSignInBinding.inflate(layoutInflater, container, false)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -58,13 +60,20 @@ class SignInFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         networkHelper = NetworkHelper(binding.root.context)
 
-
+        token = (activity as HolderActivity).intent.extras!!.getString("key")
+        (activity as HolderActivity)
+        Log.d(TAG, "onCreateView: $token")
         binding.signIn.setOnClickListener {
 
-            if (networkHelper.isNetworkConnected()){
+            if (networkHelper.isNetworkConnected()) {
+
                 signIn()
-            }else{
-                Toast.makeText(binding.root.context, "Internetchangiz yoqilganiga ishonch hosil qiling", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(
+                    binding.root.context,
+                    "Make sure your internet is on",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
 
@@ -72,12 +81,20 @@ class SignInFragment : Fragment() {
 
 
         binding.logOut.setOnClickListener {
-            if (networkHelper.isNetworkConnected()){
+            if (networkHelper.isNetworkConnected()) {
                 googleSignInClient.signOut()
 
-                Toast.makeText(binding.root.context, "Siz akkauntingizdan chiqdingiz", Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(binding.root.context, "Internetchangiz yoqilganiga ishonch hosil qiling", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    binding.root.context,
+                    "you have logged out",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                Toast.makeText(
+                    binding.root.context,
+                    "Make sure your internet is on",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
         }
@@ -119,11 +136,16 @@ class SignInFragment : Fragment() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
-
-                    findNavController().navigate(R.id.homeFragment)
+                    var bundle = Bundle()
+                    bundle.putString("key", token)
+                    findNavController().navigate(R.id.homeFragment, bundle)
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    Toast.makeText(binding.root.context, task.exception?.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        binding.root.context,
+                        task.exception?.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
     }

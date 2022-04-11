@@ -9,6 +9,7 @@ class User: Serializable {
     var photoUrl: String? = null
     var uid: String? = null
     var online: Boolean? = null
+var token:String?=null
 
 
 
@@ -20,7 +21,8 @@ class User: Serializable {
         phoneNumber: String?,
         photoUrl: String?,
         uid: String?,
-        online: Boolean?
+        online: Boolean?,
+        token: String?
     ) {
         this.email = email
         this.displayName = displayName
@@ -28,6 +30,7 @@ class User: Serializable {
         this.photoUrl = photoUrl
         this.uid = uid
         this.online = online
+        this.token = token
     }
 
 

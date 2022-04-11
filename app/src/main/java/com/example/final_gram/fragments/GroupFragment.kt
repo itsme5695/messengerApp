@@ -23,14 +23,12 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 class GroupFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var token: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            token = it.getString(ARG_PARAM1)
         }
     }
 
@@ -62,7 +60,7 @@ class GroupFragment : Fragment() {
         val phoneNumber = currentUser?.phoneNumber
         val photoUrl = currentUser?.photoUrl
         val uid = currentUser?.uid
-        val user = User(email, displayName, phoneNumber, photoUrl.toString(), uid,false)
+        val user = User(email, displayName, phoneNumber, photoUrl.toString(), uid,false,token)
 
 
 
@@ -160,11 +158,10 @@ class GroupFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(token: String) =
             GroupFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putString(ARG_PARAM1, token)
                 }
             }
     }

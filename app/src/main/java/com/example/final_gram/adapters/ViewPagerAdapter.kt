@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.final_gram.fragments.GroupFragment
 import com.example.final_gram.fragments.TabFragment
 
-class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle, var token: String) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount(): Int {
@@ -15,14 +15,14 @@ class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     }
 
     override fun createFragment(position: Int): Fragment {
-        return when(position){
-            0->{
-                TabFragment()
+        return when (position) {
+            0 -> {
+                TabFragment.newInstance(token)
             }
-            1->{
-                GroupFragment()
+            1 -> {
+                GroupFragment.newInstance(token)
             }
-            else->{
+            else -> {
                 Fragment()
             }
         }
