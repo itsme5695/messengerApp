@@ -70,7 +70,7 @@
 
         <TextView
             android:id="@+id/message_tv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:text="How are you?"
             android:padding="12sp"
             android:textColor="@color/black"

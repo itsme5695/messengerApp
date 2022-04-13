@@ -4,11 +4,10 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.final_gram.R
 import com.example.final_gram.adapters.ViewPagerAdapter
 import com.example.final_gram.databinding.FragmentHomeBinding
@@ -47,7 +46,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentHomeBinding.inflate(layoutInflater,container,false)
+        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
         setViewPager()
 
@@ -55,13 +54,14 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+
     @SuppressLint("ResourceAsColor")
     private fun setViewPager() {
         val viewPager = binding.viewPager
         val tabLayout = binding.tabLayout
-        Toast.makeText(requireContext(), token, Toast.LENGTH_SHORT).show()
+
         Log.d(TAG, "onCreateView: $token")
-        val adapter = ViewPagerAdapter(childFragmentManager, lifecycle,token!!)
+        val adapter = ViewPagerAdapter(childFragmentManager, lifecycle, token!!)
         viewPager.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->

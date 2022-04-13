@@ -66,7 +66,7 @@ class TabFragment : Fragment() {
 
         for (recent in recently) {
             if (recent.sms.isNotEmpty()) {
-                Log.d(TAG, "onCreateView: ${recent}")
+                Log.d(TAG, "onCreateView: $recent")
             }
         }
 //        updateData(email,displayName,phoneNumber,photoUrl,uid,true)
@@ -139,16 +139,19 @@ class TabFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         reference.child("${firebaseAuth.currentUser!!.uid}/online").setValue(true)
+        //reference.child("${firebaseAuth.currentUser!!.uid}/login").setValue(true)
     }
 
     override fun onStop() {
         super.onStop()
+        //reference.child("${firebaseAuth.currentUser!!.uid}/login").setValue(true)
         reference.child("${firebaseAuth.currentUser!!.uid}/online").setValue(true)
     }
-
     override fun onDestroy() {
         super.onDestroy()
+        //reference.child("${firebaseAuth.currentUser!!.uid}/login").setValue(false)
         reference.child("${firebaseAuth.currentUser!!.uid}/online").setValue(false)
+        findNavController().popBackStack()
     }
 
     companion object {

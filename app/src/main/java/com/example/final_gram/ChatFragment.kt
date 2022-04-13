@@ -204,7 +204,6 @@ class ChatFragment : Fragment() {
 
         })*/
 
-
         return binding.root
     }
 
@@ -240,13 +239,9 @@ class ChatFragment : Fragment() {
                     override fun onFailure(call: Call<MyResponce>, t: Throwable) {
 
                     }
-
                 })
         }
-
-
     }
-
 
     private fun groupUsers() {
         referenceUsers.addValueEventListener(object : ValueEventListener {
@@ -261,8 +256,6 @@ class ChatFragment : Fragment() {
                     if (value != null && uid != value.uid) {
                         userList.add(value)
                     }
-
-
                 }
             }
 
@@ -273,15 +266,6 @@ class ChatFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ChatFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             ChatFragment().apply {

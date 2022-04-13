@@ -56,10 +56,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 importance
             )
             mBuilder.setChannelId(NOTIFICATION_CHANNEL_ID)
-            assert(mNotificationManager != null)
             mNotificationManager.createNotificationChannel(notificationChannel)
         }
-        assert(mNotificationManager != null)
         mNotificationManager.notify(
             System.currentTimeMillis().toInt(),
             mBuilder.build()

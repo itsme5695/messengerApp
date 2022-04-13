@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="25sp"
-        android:text="Sign in" />
+        android:text="Sign in"
+        />
 
     <TextView
         android:id="@+id/log_out"

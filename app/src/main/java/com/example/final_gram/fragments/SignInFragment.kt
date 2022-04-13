@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.final_gram.HolderActivity
 import com.example.final_gram.R
 import com.example.final_gram.databinding.FragmentSignInBinding
+import com.example.final_gram.models.User
 import com.example.final_gram.utils.NetworkHelper
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -19,6 +20,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
 private const val ARG_PARAM1 = "param1"
@@ -39,34 +42,65 @@ class SignInFragment : Fragment() {
 
     lateinit var binding: FragmentSignInBinding
     lateinit var googleSignInClient: GoogleSignInClient
-
+    lateinit var reference: DatabaseReference
+    lateinit var firebaseDatabase: FirebaseDatabase
     var RC_SIGN_IN = 1
     private val TAG = "SignInFragment"
     lateinit var auth: FirebaseAuth
     lateinit var networkHelper: NetworkHelper
+    lateinit var user: User
     var token: String? = null
+
+    override fun onStart() {
+        super.onStart()
+        auth = FirebaseAuth.getInstance()
+        networkHelper = NetworkHelper(binding.root.context)
+        firebaseDatabase = FirebaseDatabase.getInstance()
+        reference = firebaseDatabase.getReference("users")
+        if (auth.currentUser != null) {
+            var bundle = Bundle()
+            bundle.putString("key", token)
+            findNavController().navigate(R.id.homeFragment,bundle)
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentSignInBinding.inflate(layoutInflater, container, false)
+
+
+
+
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-
         googleSignInClient = GoogleSignIn.getClient(binding.root.context, gso)
-        auth = FirebaseAuth.getInstance()
-        networkHelper = NetworkHelper(binding.root.context)
-
         token = (activity as HolderActivity).intent.extras!!.getString("key")
         (activity as HolderActivity)
         Log.d(TAG, "onCreateView: $token")
+        /*reference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val currentUser = auth.currentUser
+                val uid = currentUser?.uid
+                val children = snapshot.children
+                for (child in children) {
+                    val value = child.getValue(User::class.java)
+                    if (value != null && uid != value.uid) {
+                        user = value
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })*/
+
         binding.signIn.setOnClickListener {
-
             if (networkHelper.isNetworkConnected()) {
-
                 signIn()
             } else {
                 Toast.makeText(
@@ -75,15 +109,10 @@ class SignInFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-
-
         }
-
-
         binding.logOut.setOnClickListener {
             if (networkHelper.isNetworkConnected()) {
                 googleSignInClient.signOut()
-
                 Toast.makeText(
                     binding.root.context,
                     "you have logged out",
@@ -103,6 +132,7 @@ class SignInFragment : Fragment() {
 
         return binding.root
     }
+
 
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
